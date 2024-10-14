@@ -236,4 +236,10 @@ body::-webkit-scrollbar {
     font-weight: bold;
     color: #4CAF50;
   }
-  
+
+  .nav-pills .nav-link {
+    border-radius: 0;
+  }
+  .nav-pills .nav-link.active {
+    background-color: #007bff;
+  }

@@ -8,6 +8,9 @@ let REGISTRAR_PERSONA = 102;
 $(document).ready(function () {
     $('.carousel').carousel()
     cargarServicios();
+    $("#btn-registrar").on("click", function(){
+        $("#modalRegistrar").modal("show");
+    })
 });
 
 function getQueryParam(param) {
@@ -37,16 +40,15 @@ function cargarServicios() {
         success: function (data) {
             var data = JSON.parse(data).data;
             $(data).each(function(i, o) {
-                var div = ' <div class="servicio-item"> ' +
+                var div = ' <div class="col-sm-6 wowload fadeInUp mb-3"> <div class="servicio-item"> ' +
                 '<input type="checkbox" id="servicio1" class="servicio-checkbox">' +
                 '<label for="servicio1">' +
                 '<div class="servicio-info">'+
                 '<p class="descripcion">'+o.descripcion+'</p>'+
-                '<p class="valor">' + formatCurrency(o.valor) +'</p> </div></label></div>';
+                '<p class="valor">' + formatCurrency(o.valor) +'</p> </div></label></div></div>';
                 $('#servicios').append(div);
             });
-           
-        },
+           },
         error: function (xhr, status, error) {
             console.log('Error: ' + error);
            alert('<p>Hubo un problema al cargar los servicios. Intente de nuevo más tarde.</p>');
